@@ -16,7 +16,7 @@ void oblicz(double m, double a, double b){
 	for(t=a; t<=b+h/2; t=t+h){
 		//if(t > b) t = b;
 		y = (t*t) + 1;
-		if( i % ( (int) m/10) == 0 || t == 3){
+		if( i % ( (int)  m/10) == 0 || t == 3){
 
 		//rozwiazanie dokladne
 		printf("[x: %.4lf] [dokladne: %lf] \n", t, y);
@@ -46,16 +46,16 @@ void oblicz(double m, double a, double b){
 }
 
 int main(){
-	double m;
+	int m;
 	double a=1, b=3;
 	int test;
 
 	while(1){
 		printf("Podaj podzial m = ");
-		scanf("%lf", &m);
-		if(m<0){ continue; }
+		scanf("%i", &m);
+		if( (m<10) || (m % 10 != 0) ){ continue; }
 
-		oblicz(m,a,b);
+		oblicz( (double) m,a,b);
 		
 		printf("Aby kontynuowac nacisnij 1.");
 		scanf("%i", &test);
