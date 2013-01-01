@@ -9,14 +9,14 @@ double abst(double x){
 	return x;
 }
 
-void oblicz(double m, double a, double b){
+void oblicz(long int m, double a, double b){
 	double h=abst(b-a)/m, Ey=2, Hy=2, t, y, Eb, EmaxB=0, Hb, HmaxB=0;
-	int i = (int) m;
+	long int i = m;
 
 	for(t=a; t<=b+h/2; t=t+h){
 		//if(t > b) t = b;
 		y = (t*t) + 1;
-		if( i % ( (int)  m/10) == 0 || t == 3){
+		if( i % (m/10) == 0 || t == 3){
 
 		//rozwiazanie dokladne
 		printf("[x: %.4lf] [dokladne: %lf] \n", t, y);
@@ -39,6 +39,7 @@ void oblicz(double m, double a, double b){
 		Ey = Ey + (h * fun(t,Ey));
 		Hy = Hy + h * ( fun(t,Hy) + fun(t+h, Hy + fun(t,Hy) * h) ) / 2 ;
 	}
+	
 
 	printf("Maksymalny blad:\n");
 	printf(" \t Metoda Eulera: %.16lf \n", EmaxB);
@@ -46,16 +47,16 @@ void oblicz(double m, double a, double b){
 }
 
 int main(){
-	int m;
+	long int m;
 	double a=1, b=3;
 	int test;
 
 	while(1){
 		printf("Podaj podzial m = ");
-		scanf("%i", &m);
+		scanf("%li", &m);
 		if( (m<10) || (m % 10 != 0) ){ continue; }
 
-		oblicz( (double) m,a,b);
+		oblicz(m,a,b);
 		
 		printf("Aby kontynuowac nacisnij 1.");
 		scanf("%i", &test);
